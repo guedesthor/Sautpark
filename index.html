@@ -10,53 +10,83 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #e6f2ff;
-      color: #000;
-      overflow-x: hidden;
-      position: relative;
-    }
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f26522, #ffd600, #ff6ec4, #4facfe);
+  background-size: 400% 400%;
+  animation: fundoAnimado 15s ease infinite;
+  color: #000;
+  overflow-x: hidden;
+  position: relative;
+}
+@keyframes fundoAnimado {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .hero-mascote {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  width: 200px;
+  width: 200px; /* tamanho padrão */
   height: auto;
   animation: jump 2s ease-in-out infinite;
   z-index: 2;
+  transition: width 0.3s ease; /* suaviza a mudança */
 }
+
+/* Para telas menores que 768px (tablets e smartphones) */
+@media (max-width: 768px) {
+  .hero-mascote {
+    width: 120px; /* reduz para 120px */
+  }
+}
+
+/* Para telas ainda menores, tipo celular pequeno */
+@media (max-width: 480px) {
+  .hero-mascote {
+    width: 80px; /* reduz para 80px */
+    bottom: 10px; /* ajuste de margem */
+    left: 10px;
+  }
+}
+
 
 @keyframes jump {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-25px); }
 }
-    header {
-      background-color: #f26522;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      color: white;
-    }
-    header h1 {
-      font-family: 'Bungee', cursive;
-      font-size: 28px;
-    }
-    nav a {
-      margin: 0 10px;
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #ffd600; }
-    nav a.ingressos {
-      color: #ffd600;
-      font-weight: 900;
-    }
+   header {
+  background-color: #00bfff; /* azul claro vibrante */
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+nav a {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffd600; /* amarelo vibrante ao passar o mouse */
+}
+
+nav a.ingressos {
+  color: #0047ab; /* azul escuro neon para destaque */
+  font-weight: 900;
+}
+
+
     .hero {
       background: url('https://via.placeholder.com/1600x500/f26522/ffffff?text=SautPark+-+Diversao+para+Toda+Familia') center/cover no-repeat;
       height: 500px;
@@ -150,14 +180,25 @@
         display: block;
       }
     }
+	.highlight {
+  background-color: rgba(255, 214, 0, 0.3); /* amarelo suave e translúcido */
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 900;
+  color: #000; /* ou #333 para um tom mais suave */
+}
   </style>
 </head>
 <body>
 
 <header>
-<a href="#inicio">
-  <img src="sautpark-logo-removebg-preview.png" alt="SautPark Logo" style="height: 60px;">
-</a>
+  <div style="display: flex; align-items: center;">
+    <a href="#inicio">
+      <img src="sautpark-logo-removebg-preview.png" alt="SautPark Logo" style="height: 60px;">
+    </a>
+    <h1 style="margin-left: 10px; font-family: 'Bungee', cursive; font-size: 28px;">SautPark</h1>
+  </div>
+
 
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
   <nav id="menu">
@@ -170,12 +211,19 @@
   </nav>
 </header>
 
+
+
+
+
 <section class="hero" id="inicio">
-  <span style="font-size: 32px;">
-    Parque para todas as idades, aniversário, festa, <span class="highlight">diversão</span>.
-  </span>
 <img src="bixo.png" alt="Mascote SautPark" class="hero-mascote">
+  <div style="max-width: 800px; margin: 0 auto 140px auto; text-align: center; font-size: 32px; padding: 0 20px;">
+   O parque mais divertido da cidade está chegando! Vem aí o <span class="highlight">SautPark</span>: trampolins, festas e MUITA alegria pra toda a família!
+</span>
+  
 </section>
+
+
 
 <section class="section" id="atracoes" data-aos="fade-up">
   <h3>Atrações</h3>
